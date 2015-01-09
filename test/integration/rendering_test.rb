@@ -26,9 +26,17 @@ class RenderingTest < ActionDispatch::IntegrationTest
 
   test "object scratches should inspect the object" do
     get '/scratch_object'
-    assert_select ".scratch", { text: "#", count: 0 }
-    #assert_select ".scratch" do |element|
-    #  assert_match(/bar/, element.html)
-    #end
+    assert_select ".scratch", { html: "#", count: 0 }
+  end
+
+  test "object scratches should render object at time of scratch" do
+    get '/scratch_with_changed_object'
+    assert_select ".scratch", { html: /baz/, count: 1 }
+  end
+
+  test "object scratches should render changed object at each scratch" do
+    get '/multiple_scratch_with_changed_object'
+    assert_select ".scratch", { html: /baz/,  count: 1 }
+    assert_select ".scratch", { html: /buzz/, count: 1 }
   end
 end

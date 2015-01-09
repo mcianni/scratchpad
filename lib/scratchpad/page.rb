@@ -5,7 +5,7 @@ module Scratchpad
     end
 
     def add content
-      (@content ||= []) << content
+      (@content ||= []) << content.dup
     end
 
     def to_html
