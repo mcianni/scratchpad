@@ -12,15 +12,23 @@ class RenderingTest < ActionDispatch::IntegrationTest
     assert_select "#scratchpad"
   end
 
-  test "only one scratchpad should render if multiple scratchs" do
+  test "only one scratchpad should render if multiple scratches" do
     get '/multiple_scratch'
     assert_select "#scratchpad", 1
   end
 
-  test "multiple scratchs should render for multiple scratchs" do
+  test "multiple scratches should render for multiple scratches" do
     get '/multiple_scratch'
     assert_select "#scratchpad" do
       assert_select ".scratch", 2
     end
+  end
+
+  test "object scratches should inspect the object" do
+    get '/scratch_object'
+    assert_select ".scratch", { text: "#", count: 0 }
+    #assert_select ".scratch" do |element|
+    #  assert_match(/bar/, element.html)
+    #end
   end
 end
