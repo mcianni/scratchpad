@@ -5,16 +5,14 @@ module Scratchpad
     end
 
     def add content
-      (@content ||= []) << content.dup
+      file, line = *caller[1].split(':')
+      (@content ||= []) <<  { content: content.dup, file: file, line: line }
     end
 
     def to_html
       return "" unless @content
-      %Q{ 
-      <div id="scratchpad" style="position:absolute;bottom:0;background-color:#333;color:whitesmoke;width:100%;padding:5px;">
-        #{@content.map { |i| "<div class='scratch'>#{CGI::escapeHTML(i.inspect)}</div>" }.join}
-      </div>
-      }
+      ActionView::Base.new(File.dirname(__FILE__)+"../../../app/views").render( file: "scratchpad.html.erb", locals: { content: @content } )
     end
+
   end
 end
