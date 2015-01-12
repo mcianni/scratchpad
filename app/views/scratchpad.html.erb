@@ -1,5 +1,34 @@
-<div id="scratchpad" style="position:absolute;bottom:0;background-color:#333;color:whitesmoke;width:100%;padding:5px;">
-  <table style="width:100%;">
+<style>
+  #scratchpad { 
+    position: absolute;
+    bottom: 0;
+    background-color: #333;
+    color: whitesmoke;
+    width: 100%;
+    padding: 2px 5px;
+  }
+  #scratchpad-toggle {
+    width: 100%;
+    color: yellowgreen;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+  }
+  #scratchpad table {
+    width: 100%;
+  }
+  #scratchpad tr:nth-of-type(odd) {
+    background-color: #555;
+  }
+  #scratchpad.collapsed {
+    height: 22px;
+    overflow: hidden;
+  }
+</style>
+
+<div id="scratchpad">
+  <a id="scratchpad-toggle" href="#">Scratchpad <span>+</span></a>
+  <table>
     <% content.each do |i| %>
       <tr class='scratch'>
         <td><%= "#{i[:file]}:#{i[:line]}" %></td>
@@ -8,4 +37,13 @@
     <% end %>
   </table>
 </div>
- 
+
+<script type="text/javascript">
+  el = document.getElementById("scratchpad-toggle");
+  el.onclick = function() {
+    document.getElementById("scratchpad").classList.toggle("collapsed");
+    return false;
+  };
+</script>
+
+

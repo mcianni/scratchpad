@@ -41,7 +41,7 @@ class RenderingTest < ActionDispatch::IntegrationTest
   end
 
   test "scratch should render calling file" do
-    get '/scratch_object'
+    get '/scratch'
     assert_select ".scratch", { html: /scratch\.html\.erb/, count: 1 }
   end
 
