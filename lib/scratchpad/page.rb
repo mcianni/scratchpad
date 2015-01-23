@@ -11,7 +11,7 @@ module Scratchpad
 
     def to_html
       return "" unless @content
-      ActionView::Base.new(File.dirname(__FILE__)+"../../../app/views").render( 
+      ActionView::Base.new(File.dirname(__FILE__)+"../../../app/views").render(
         file: "scratchpad.html.erb",
         locals: { content: @content }
       )

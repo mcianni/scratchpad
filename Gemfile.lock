@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scratchpad (0.0.3)
+    scratchpad (0.0.4)
       rails (~> 4.0)
 
 GEM
