@@ -16,7 +16,7 @@ And then execute:
     $ bundle
 
 ## Usage
-Scratchpad adds a view helper your your application. Call it as many times as necessary.
+Scratchpad adds a view helper into your application. Call it as many times as necessary.
 
 ```erb
   <% scratchpad @user %>
