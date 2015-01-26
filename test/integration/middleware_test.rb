@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class MiddlewareTest < ActionDispatch::IntegrationTest
-  
+
   test "the scratchpad should exist without adding content" do
     get '/'
     assert request.env[:scratchpad]
